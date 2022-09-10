@@ -1,0 +1,20 @@
+.news {
+    font-size: 15px;
+    text-decoration: none;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 4px;
+    padding: 6px 6px;
+    font-weight: 500;
+}
+
+.gateway {
+    color: blueviolet;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.blog {
+    color: gray;
+    text-decoration: none;
+}
