@@ -18,3 +18,16 @@
     color: gray;
     text-decoration: none;
 }
+
+.navbar {
+    font-size: 15px;
+}
+
+.card-img-top {
+    height: 240px;
+}
+
+.author-img {
+    height: 60px;
+    width: 60px;
+}
