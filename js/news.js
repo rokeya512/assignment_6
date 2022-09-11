@@ -20,9 +20,13 @@ const displayCategory = categories => {
         `;
         categoryContainer.appendChild(categoryDiv);
     })
+
 };
 
+
 const loadNews = (category_id) => {
+    // start loader or spinner
+    toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     fetch(url)
         .then(res => res.json())
@@ -44,18 +48,19 @@ const displayNews = newses => {
         <div class="col-md-8 card-body p-2">
             <h5 class="card-title">${news.title ? news.title : 'No title found!'}</h5>
             <p class="card-text">${news.details.slice(0, 270)}...</p>
-        <div class="col-sm-4">
 
+        
+        <div class="row row-col-sm-4">
         <div class="d-flex">
         <div>
             <img src="${news.author.img}" class="author-img img-fluid rounded-circle alt="...">
         </div>
-        <div>
+        <div class="ms-2">
             <p>${news.author.name}</p>
             <p>${news.author.published_date}</p>
         </div>
-        <div>
-
+        </div>
+        
         <div>
             <p><i class="fa-light fa-eye"></i> 
             ${news.total_view} </p>
@@ -81,6 +86,8 @@ const displayNews = newses => {
         `;
         newsContainer.appendChild(newsDiv);
     })
+    // stop loader or spinner
+    toggleSpinner(false);
 };
 
 const loadNewsDetails = (news_id) => {
@@ -89,6 +96,7 @@ const loadNewsDetails = (news_id) => {
         .then(res => res.json())
         .then(data => displayNewsDetails(data.data))
 }
+
 const displayNewsDetails = allNewsDetails => {
     const modalBody = document.getElementById('modal-body');
 
@@ -100,12 +108,8 @@ const displayNewsDetails = allNewsDetails => {
       </div>
       <h2 class="card-title my-3">${newsDetails.title ? newsDetails.title : 'No Data Found'}</h2>
       <p class="card-text">${newsDetails.details ? newsDetails.details : 'No Data Found'}</p>
-      <div class="style2"><small class="p-3">Rating : ${newsDetails.rating.number}
-      </small>
-      <small class="p-3">Badge : ${newsDetails.rating.badge ? newsDetails.rating.badge : 'No Data Found'}</small>
-      </div>
 
-        <div class="card-text style2 my-2">
+        <div class="card-text">
 
             <div>
                 <div style="width:40px" class="d-inline-block">
@@ -115,17 +119,27 @@ const displayNewsDetails = allNewsDetails => {
                 <span>${newsDetails.author.name ? newsDetails.author.name : 'No Data Found'}</span>
             </div>
 
+            <div class="mt-4">
+                <small class="p-3">Rating : ${newsDetails.rating.number}</small>
+                <small class="p-3">Badge : ${newsDetails.rating.badge ? newsDetails.rating.badge : 'No Data Found'}</small>
+            </div>
+
             <div>
-                <span>
-                    <p><i class="fa-light fa-eye"></i></p>
-                </span>
-                <span>
-                    ${newsDetails.total_view ? newsDetails.total_view : 'No Data Found'}
-                </span>
+                <p><i class="fa-light fa-eye"></i></p>
+                <p>${newsDetails.total_view ? newsDetails.total_view : 'No Data Found'}</p>
             </div>
             </div>
- `
+ `;
     })
+}
+
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('d-none');
+    } else {
+        loaderSection.classList.add('d-none');
+    }
 }
 
 loadCategory();
