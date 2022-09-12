@@ -12,7 +12,7 @@ const displayCategory = categories => {
         const categoryDiv = document.createElement('div');
         categoryDiv.classList.add('container-fluid');
         categoryDiv.innerHTML = `
-        <a class="navbar-brand blog navbar" onclick="loadNews('${category.category_id}')" href="#">${category.category_name}</a>
+        <a class="navbar-brand blog navbar category" onclick="loadNews('${category.category_id}')" href="#">${category.category_name}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,6 +36,7 @@ const loadNews = (category_id) => {
 
 const displayNews = newses => {
     const newsContainer = document.getElementById('news-container');
+    newsContainer.innerText = '';
     newses.forEach(news => {
         //console.log(news);
         const newsDiv = document.createElement('div');
