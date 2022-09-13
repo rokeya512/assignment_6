@@ -20,9 +20,7 @@ const displayCategory = categories => {
         `;
         categoryContainer.appendChild(categoryDiv);
     })
-
 };
-
 
 const loadNews = (category_id) => {
     // start loader or spinner
@@ -30,14 +28,24 @@ const loadNews = (category_id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => displayNews(data.data))
-        .catch(error => console.log(error))
+        .then(data => displayNews(data))
+        .catch(error => displayNews(error))
 }
 
 const displayNews = newses => {
+    if (newses.status === false) {
+        const noFoundNews = document.getElementById('No-data');
+        noFoundNews.classList.remove('d-none');
+    } else {
+        const noFoundNews = document.getElementById('No-data');
+        noFoundNews.classList.add('d-none');
+    }
+    newses.data.sort(function (a, b) {
+        return b.total_view - a.total_view;
+    });
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerText = '';
-    newses.forEach(news => {
+    newses.data.forEach(news => {
         //console.log(news);
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('card');
@@ -50,7 +58,6 @@ const displayNews = newses => {
             <h5 class="card-title">${news.title ? news.title : 'No title found!'}</h5>
             <p class="card-text">${news.details.slice(0, 270)}...</p>
 
-        
         <div class="row row-col-sm-4">
         <div class="d-flex">
         <div>
@@ -83,12 +90,13 @@ const displayNews = newses => {
         </div>
         </div>
         </div>
-
         `;
         newsContainer.appendChild(newsDiv);
+
     })
     // stop loader or spinner
     toggleSpinner(false);
+
 };
 
 const loadNewsDetails = (news_id) => {

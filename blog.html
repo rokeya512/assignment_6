@@ -6,15 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="container">
+    <header>
+        <nav class="navbar bg-light p-3">
+            <div class="container-fluid">
+                <div class="d-flex nav-item">
+                    <a href="index.html" class="news">News</a>
+                    <a href="" class="gateway ms-2">Gateway</a>
+                </div>
+                <div class="d-flex">
+                    <a href="index.html" class="gateway me-4">News</a>
+                    <a href="blog.html" class="blog">Blog</a>
+                </div>
+            </div>
+        </nav>
+        <hr>
+    </header>
     <strong>Question 1: Difference between const, let & var?</strong>
     <p>Ans: Var declarations are globally scoped or function scoped while let and const are block scoped. var variables
         can be updated and re-declared within its scope; let variables can be updated but not re-declared; const
         variables can neither be updated nor re-declared.</p><br>
 
-    <strong>Question 2: Difference between regular & arrow funtion?></strong>
+    <strong>Question 2: Difference between regular & arrow funtion?</strong>
     <p>Ans: Since regular functions are constructible, they can be called using the new keyword. However, the arrow
         functions are only callable and not constructible, arrow functions can never be used as constructor functions.
         Hence, they can never be invoked with the new keyword.</p><br>

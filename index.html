@@ -13,7 +13,7 @@
 
 <body class="container">
     <header>
-        <nav class="navbar bg-light">
+        <nav class="navbar bg-light p-3">
             <div class="container-fluid">
                 <div class="d-flex nav-item">
                     <a href="" class="news">News</a>
@@ -28,7 +28,7 @@
         <hr>
         <!-- ----------menu---
             ------------------------------ -->
-        <nav class="navbar navbar-expand-lg bg-light mb-2" id="category-container">
+        <nav class="navbar navbar-expand-lg bg-light mb-2 p-2" id="category-container">
 
         </nav>
     </header>
@@ -41,10 +41,19 @@
                 </div>
             </div>
         </section>
+        <section class="bg-dark text-white text-center p-2 mt-4">
+            <h3>Select a category to see news</h3>
+        </section>
+        <section class="mt-5 p-5 bg-light">
+            Sort By: <input type="text" placeholder="Views" class="rounded p-2">
+        </section>
         <section>
             <div class="row row-cols-1 row-cols-md-12 gap-4" id="news-container">
 
             </div>
+        </section>
+        <section id="No-data" class="d-none">
+            <h2 class="text-center">No Data Found</h2>
         </section>
         <section>
             <!-- Button trigger modal -->
